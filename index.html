@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Síol Digital</title>
+<meta name="description" content="Síol Digital: a Dublin digital growth agency for SEO, websites, bespoke systems and secure logins.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a dictionary-entry hero ("síol, n. seed"), then left-aligned bands that grow from seed to harvest. */
+:root {
+  --bg: #F2F5F0;          /* pale field */
+  --surface: #E6ECE4;     /* hedgerow mist */
+  --fg: #10291F;          /* bog-oak ink */
+  --muted: #4E6358;
+  --line: #C9D4CB;
+  --moss: #2F6B4F;        /* moss green */
+  --gorse: #E8B931;       /* gorse yellow, the accent */
+  --gorse-ink: #10291F;   /* text on gorse */
+  --leaf: #7FBF8E;
+  --band: #10291F;        /* dark band background */
+  --band-fg: #EAF0EA;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --max: 72rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C1B15; --surface: #132820; --fg: #E6EEE7; --muted: #9DB2A5; --line: #24402F;
+    --moss: #7FBF8E; --gorse: #EBC24A; --gorse-ink: #10291F; --leaf: #7FBF8E;
+    --band: #081410; --band-fg: #E6EEE7; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C1B15; --surface: #132820; --fg: #E6EEE7; --muted: #9DB2A5; --line: #24402F;
+  --moss: #7FBF8E; --gorse: #EBC24A; --gorse-ink: #10291F; --leaf: #7FBF8E;
+  --band: #081410; --band-fg: #E6EEE7; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 1.0625rem; line-height: 1.6; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--gorse); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.05; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-family: var(--mono); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--moss); }
+section { padding-block: clamp(4rem, 9vw, 7rem); }
+
+/* Nav */
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .8rem; }
+.brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 1.3rem; letter-spacing: -.01em; }
+.brand svg { width: 36px; height: 36px; flex: none; }
+.brand span small { font-weight: 500; color: var(--muted); font-size: .95rem; margin-left: .15rem; }
+.nav ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; font-weight: 500; font-size: .95rem; }
+.nav ul a { text-decoration: none; color: var(--muted); }
+.nav ul a:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.25rem; border-radius: 999px; font-weight: 600; text-decoration: none; border: 0; cursor: pointer; font: 600 1rem var(--body); transition: transform .15s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn-gorse { background: var(--gorse); color: var(--gorse-ink); }
+.btn-ghost { background: transparent; color: var(--fg); box-shadow: inset 0 0 0 1.5px var(--fg); }
+.nav .btn { padding: .55rem 1rem; font-size: .9rem; }
+@media (max-width: 760px) { .nav ul { display: none; } }
+
+/* Hero */
+.hero { padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(3rem, 7vw, 5rem); }
+.hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: end; }
+.entry { font-family: var(--mono); font-size: .95rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: .4rem 1rem; align-items: baseline; margin-bottom: 1.25rem; }
+.entry b { font-family: var(--display); font-size: 1.4rem; color: var(--fg); font-weight: 700; }
+.entry i { color: var(--moss); }
+.hero h1 { font-size: clamp(2.8rem, 7.5vw, 5.6rem); font-weight: 800; letter-spacing: -.035em; }
+.hero h1 em { font-style: normal; color: var(--moss); position: relative; white-space: nowrap; }
+.hero h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .06em; height: .14em; background: var(--gorse); z-index: -1; border-radius: 2px; }
+.hero .lede { margin-top: 1.5rem; max-width: 36rem; font-size: 1.2rem; color: var(--muted); }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+.sprout { width: 100%; max-width: 100%; height: auto; }
+.sprout .grow { stroke-dasharray: 600; stroke-dashoffset: 0; animation: draw 2.2s ease-out both; }
+@keyframes draw { from { stroke-dashoffset: 600; } }
+@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .sprout { max-width: 420px; } }
+
+/* Services */
+.section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; align-items: end; margin-bottom: 3rem; }
+.section-head h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); letter-spacing: -.025em; margin-top: .6rem; }
+.section-head p { color: var(--muted); max-width: 32rem; }
+@media (max-width: 760px) { .section-head { grid-template-columns: 1fr; } }
+
+.core { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1.5px solid var(--fg); }
+.svc { padding: 2rem 2rem 2.25rem 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr; gap: .4rem 1.25rem; min-width: 0; }
+.svc:nth-child(even) { padding-left: 2rem; padding-right: 0; border-left: 1px solid var(--line); }
+.svc .ico { grid-row: span 3; width: 44px; height: 44px; border-radius: 12px; background: var(--surface); display: grid; place-items: center; color: var(--moss); }
+.svc .ico svg { width: 24px; height: 24px; }
+.svc h3 { font-size: 1.45rem; font-weight: 700; letter-spacing: -.01em; }
+.svc p { color: var(--muted); }
+.svc ul { list-style: none; padding: 0; margin: .6rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.svc li { font-family: var(--mono); font-size: .75rem; padding: .25rem .6rem; border-radius: 999px; background: var(--surface); color: var(--fg); }
+@media (max-width: 760px) { .core { grid-template-columns: 1fr; } .svc, .svc:nth-child(even) { padding: 1.75rem 0; border-left: 0; } }
+
+.extras { margin-top: 3.5rem; }
+.extras h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; display: flex; align-items: center; gap: .6rem; }
+.extras h3 .tag { font-family: var(--mono); font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; background: var(--gorse); color: var(--gorse-ink); padding: .2rem .5rem; border-radius: 4px; }
+.extra-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.extra { background: var(--surface); border-radius: 14px; padding: 1.25rem; min-width: 0; }
+.extra b { display: block; font-family: var(--display); font-size: 1.05rem; margin-bottom: .3rem; }
+.extra span { color: var(--muted); font-size: .93rem; line-height: 1.5; display: block; }
+@media (max-width: 960px) { .extra-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .extra-grid { grid-template-columns: 1fr; } }
+
+/* Process band */
+.band { background: var(--band); color: var(--band-fg); }
+.band .eyebrow { color: var(--leaf); }
+.band .section-head p { color: color-mix(in srgb, var(--band-fg) 72%, transparent); }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: s; }
+.step { padding: 1.5rem 1.5rem 0 0; border-top: 2px solid color-mix(in srgb, var(--band-fg) 25%, transparent); position: relative; min-width: 0; }
+.step::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--gorse); }
+.step .stage { font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gorse); }
+.step h3 { font-size: 1.5rem; margin: .4rem 0 .2rem; }
+.step .ga { font-style: italic; color: var(--leaf); font-size: .9rem; display: block; margin-bottom: .6rem; }
+.step p { color: color-mix(in srgb, var(--band-fg) 75%, transparent); font-size: .97rem; }
+@media (max-width: 860px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.5rem; } }
+@media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
+
+/* Team */
+.team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.person { border: 1.5px solid var(--fg); border-radius: 20px; padding: 2rem; display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start; min-width: 0; }
+.avatar { width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 1.6rem; background: var(--gorse); color: var(--gorse-ink); }
+.person:nth-child(2) .avatar { background: var(--moss); color: var(--bg); }
+.person h3 { font-size: 1.6rem; }
+.person .role { font-family: var(--mono); font-size: .8rem; color: var(--moss); margin: .3rem 0 .8rem; }
+.person p { color: var(--muted); }
+.person ul { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.person li { font-size: .8rem; font-family: var(--mono); padding: .25rem .6rem; border-radius: 999px; background: var(--surface); }
+.why { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+.why b { font-family: var(--display); font-size: 1.15rem; display: block; margin-bottom: .3rem; }
+.why span { color: var(--muted); font-size: .97rem; }
+@media (max-width: 760px) { .team, .why { grid-template-columns: 1fr; } .person { grid-template-columns: 1fr; } }
+
+/* Contact */
+.contact { background: var(--surface); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 5vw, 4rem); }
+.contact h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); letter-spacing: -.03em; margin-top: .6rem; }
+.contact .lede { color: var(--muted); margin-top: 1rem; max-width: 30rem; }
+.mail { margin-top: 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+.mail code { font-family: var(--mono); font-size: 1.05rem; background: var(--bg); padding: .6rem .9rem; border-radius: 10px; user-select: all; }
+.mail button { font: 500 .85rem var(--body); background: none; border: 1.5px solid var(--fg); color: var(--fg); border-radius: 999px; padding: .45rem .9rem; cursor: pointer; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg); padding: clamp(1.25rem, 3vw, 2rem); border-radius: 20px; }
+.field { display: grid; gap: .35rem; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+label { font-size: .85rem; font-weight: 600; }
+input, select, textarea { font: inherit; font-size: 1rem; color: var(--fg); background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: .7rem .8rem; width: 100%; }
+input:focus, select:focus, textarea:focus { border-color: var(--moss); outline: none; }
+textarea { min-height: 7rem; resize: vertical; }
+.checks { display: flex; flex-wrap: wrap; gap: .5rem; }
+.checks label { font-weight: 500; display: inline-flex; align-items: center; gap: .4rem; padding: .4rem .75rem; border-radius: 999px; border: 1.5px solid var(--line); cursor: pointer; font-size: .88rem; }
+.checks input { width: auto; accent-color: var(--moss); }
+.checks label:has(input:checked) { border-color: var(--moss); background: var(--surface); }
+.form-note { grid-column: 1 / -1; font-size: .9rem; color: var(--moss); font-weight: 500; }
+@media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { form { grid-template-columns: 1fr; } }
+
+footer { padding-block: 2.5rem; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; }
+.foot .brand { font-size: 1.05rem; color: var(--fg); }
+.foot .brand svg { width: 28px; height: 28px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="logo" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="14" fill="#10291F"/>
+      <ellipse cx="32" cy="50" rx="9" ry="5.5" fill="#E8B931"/>
+      <path d="M32 47 V24" stroke="#E8B931" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M32 33 C21 33 14 26 14 16 C24 16 32 22 32 33 Z" fill="#7FBF8E"/>
+      <path d="M32 26 C32 16 39 9 50 9 C50 19 43 26 32 26 Z" fill="#E8B931"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Síol Digital home">
+      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <span>Síol<small>Digital</small></span>
+    </a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How we work</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+    <a class="btn btn-gorse" href="#contact">Start a project</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="entry"><b>síol</b><span>/ʃiːl/</span><i>ainmfhocal</i><span>— seed; the beginning of growth.</span></div>
+        <h1>We plant the digital roots your business <em>grows</em> from.</h1>
+        <p class="lede">Síol Digital is a Dublin growth agency. We help Irish businesses get found on Google, look sharp online, and run on software built around how they actually work.</p>
+        <div class="ctas">
+          <a class="btn btn-gorse" href="#contact">Get a free audit</a>
+          <a class="btn btn-ghost" href="#services">See what we do</a>
+        </div>
+      </div>
+      <svg class="sprout" viewBox="0 0 420 340" role="img" aria-label="A seedling growing out of a rising search-ranking line">
+        <g stroke="var(--line)" stroke-width="1">
+          <line x1="20" y1="300" x2="400" y2="300"/>
+          <line x1="20" y1="230" x2="400" y2="230" stroke-dasharray="3 6"/>
+          <line x1="20" y1="160" x2="400" y2="160" stroke-dasharray="3 6"/>
+          <line x1="20" y1="90" x2="400" y2="90" stroke-dasharray="3 6"/>
+        </g>
+        <g font-family="JetBrains Mono, monospace" font-size="11" fill="var(--muted)">
+          <text x="20" y="320">Month 1</text>
+          <text x="345" y="320">Month 6</text>
+          <text x="364" y="84">#1</text>
+          <text x="358" y="224">#10</text>
+        </g>
+        <path class="grow" d="M30 290 C 90 285, 120 260, 160 240 S 230 190, 260 160 S 320 110, 380 92" fill="none" stroke="var(--moss)" stroke-width="4" stroke-linecap="round"/>
+        <g transform="translate(380 92)">
+          <path d="M0 0 V-38" stroke="var(--moss)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M0 -20 C-18 -20 -30 -32 -30 -48 C-14 -48 0 -38 0 -20 Z" fill="var(--leaf)"/>
+          <path d="M0 -32 C0 -48 12 -60 30 -60 C30 -44 18 -32 0 -32 Z" fill="var(--gorse)"/>
+          <circle r="7" fill="var(--gorse)" stroke="var(--bg)" stroke-width="3"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section id="services" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Services</div>
+          <h2>Four things we do really well.</h2>
+        </div>
+        <p>Start with one, or let us join them up. A site that ranks, a login that's secure, and a system that saves your team hours each week all work better together.</p>
+      </div>
+
+      <div class="core">
+        <article class="svc">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8"/><path d="M8 12l2-2 2 1.5 2-3"/></svg></div>
+          <h3>SEO optimisation</h3>
+          <p>Show up when people nearby search for what you sell. Technical fixes, content that answers real questions, and monthly reports you can read.</p>
+          <ul><li>Local SEO</li><li>Google Business Profile</li><li>Site audits</li><li>Keyword research</li></ul>
+        </article>
+        <article class="svc">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/><path d="M9 14l-2 1.5L9 17M15 14l2 1.5-2 1.5"/></svg></div>
+          <h3>Website development</h3>
+          <p>Fast, mobile-first websites that load in under two seconds and turn visitors into enquiries. You can edit them yourself afterwards.</p>
+          <ul><li>Business sites</li><li>Landing pages</li><li>E-commerce</li><li>Redesigns</li></ul>
+        </article>
+        <article class="svc">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></svg></div>
+          <h3>Bespoke systems</h3>
+          <p>Booking tools, stock trackers, client portals and internal dashboards, built for your workflow so you stop juggling spreadsheets.</p>
+          <ul><li>Booking systems</li><li>Client portals</li><li>Internal tools</li><li>Integrations</li></ul>
+        </article>
+        <article class="svc">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg></div>
+          <h3>Login &amp; member systems</h3>
+          <p>Secure sign-in for customers, members or staff. Passwords hashed properly, sign in with Google, two-factor where it matters, and GDPR-aware data handling.</p>
+          <ul><li>User accounts</li><li>Social sign-in</li><li>2FA</li><li>Member areas</li></ul>
+        </article>
+      </div>
+
+      <div class="extras">
+        <h3>Also from the garden <span class="tag">Growing</span></h3>
+        <div class="extra-grid">
+          <div class="extra"><b>Analytics dashboards</b><span>See your sales, traffic and customers in one live view, with the numbers explained.</span></div>
+          <div class="extra"><b>Automation</b><span>Connect your forms, email, invoices and CRM so repeat admin runs on its own.</span></div>
+          <div class="extra"><b>AI chat assistants</b><span>A website assistant that answers FAQs and takes bookings out of hours.</span></div>
+          <div class="extra"><b>Social &amp; Google Ads</b><span>Paid campaigns set up and tracked properly, so every euro is accounted for.</span></div>
+          <div class="extra"><b>Branding starter kit</b><span>Logo, colours and fonts for new businesses that need a look to launch with.</span></div>
+          <div class="extra"><b>Email marketing</b><span>Newsletters and automated follow-ups that bring customers back.</span></div>
+          <div class="extra"><b>Hosting &amp; care plans</b><span>Updates, backups, security patches and small edits for a flat monthly fee.</span></div>
+          <div class="extra"><b>Accessibility checks</b><span>Make your site usable for everyone and ready for the European Accessibility Act.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">How we work</div>
+          <h2>From seed to harvest.</h2>
+        </div>
+        <p>Every project follows the same four stages, so you always know where things stand and what comes next.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="stage">Stage 1</span><h3>Plant</h3><span class="ga">Cur</span><p>A free call and audit. We look at your site, your rankings and your workflow, then send a plain-English plan with a fixed quote.</p></div>
+        <div class="step"><span class="stage">Stage 2</span><h3>Root</h3><span class="ga">Fréamhú</span><p>We design and build in short sprints, with a preview link you can click through every week.</p></div>
+        <div class="step"><span class="stage">Stage 3</span><h3>Grow</h3><span class="ga">Fás</span><p>Launch, then track. Search rankings, enquiries and speed are measured from day one.</p></div>
+        <div class="step"><span class="stage">Stage 4</span><h3>Harvest</h3><span class="ga">Fómhar</span><p>Monthly reports on what's working, and steady improvements to keep it growing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">The founders</div>
+          <h2>Two Dublin students. One does the numbers, one does the code.</h2>
+        </div>
+        <p>We started Síol because the small businesses around us deserved better online than a template site and a guess. You deal with us directly, from first call to launch.</p>
+      </div>
+      <div class="team">
+        <article class="person">
+          <div class="avatar" aria-hidden="true">SY</div>
+          <div>
+            <h3>Shane Young</h3>
+            <div class="role">Co-founder · Growth &amp; Analytics</div>
+            <p>Business Analytics at TU Dublin. Shane runs SEO strategy, reporting and client relationships, turning traffic data into decisions you can act on.</p>
+            <ul><li>SEO strategy</li><li>Data &amp; reporting</li><li>Client lead</li></ul>
+          </div>
+        </article>
+        <article class="person">
+          <div class="avatar" aria-hidden="true">CM</div>
+          <div>
+            <h3>Cian McCaul</h3>
+            <div class="role">Co-founder · Engineering</div>
+            <p>Computer Science at DCU. Cian builds the websites, bespoke systems and secure login flows, and keeps them fast and maintainable.</p>
+            <ul><li>Web development</li><li>Systems &amp; APIs</li><li>Authentication</li></ul>
+          </div>
+        </article>
+      </div>
+      <div class="why">
+        <div><b>Fixed quotes</b><span>You know the price before we start. No hourly surprises.</span></div>
+        <div><b>You own everything</b><span>Your code, your domain, your data. We hand over every login.</span></div>
+        <div><b>Local and reachable</b><span>Based in Dublin, happy to meet in person, and quick to reply.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="eyebrow">Dia duit</div>
+        <h2>Let's plant something.</h2>
+        <p class="lede">Tell us a bit about your business and we'll come back within two working days with a free audit of your current site and search presence.</p>
+        <div class="mail">
+          <code id="email">hello@siol.ie</code>
+          <button type="button" id="copy">Copy email</button>
+        </div>
+      </div>
+      <form id="enquiry" novalidate>
+        <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Aoife Byrne"></div>
+        <div class="field"><label for="biz">Business</label><input id="biz" name="biz" placeholder="Byrne's Bakery, Ranelagh"></div>
+        <div class="field full">
+          <label id="needs-label">What do you need?</label>
+          <div class="checks" role="group" aria-labelledby="needs-label">
+            <label><input type="checkbox" id="n-seo" checked> SEO</label>
+            <label><input type="checkbox" id="n-web"> Website</label>
+            <label><input type="checkbox" id="n-sys"> Bespoke system</label>
+            <label><input type="checkbox" id="n-login"> Logins</label>
+            <label><input type="checkbox" id="n-other"> Something else</label>
+          </div>
+        </div>
+        <div class="field full"><label for="msg">Anything else?</label><textarea id="msg" name="msg" placeholder="We get lots of walk-ins but almost no online orders…"></textarea></div>
+        <div class="field full"><button class="btn btn-gorse" type="submit" style="justify-self:start">Send enquiry</button></div>
+        <p class="form-note" id="note" hidden></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg><span>Síol<small>Digital</small></span></a>
+    <span>Fás le chéile · Grow together. Dublin, Ireland · © 2026</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('copy').addEventListener('click', function () {
+  var btn = this, text = document.getElementById('email').textContent;
+  var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); };
+  try {
+    navigator.clipboard.writeText(text).then(done, function () { selectEmail(); });
+  } catch (e) { selectEmail(); }
+  function selectEmail() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Press Ctrl+C';
+  }
+});
+document.getElementById('enquiry').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var note = document.getElementById('note');
+  var name = document.getElementById('name').value.trim();
+  note.textContent = 'Go raibh maith agat' + (name ? ', ' + name : '') + '. This form is a preview and is not connected yet, so please email hello@siol.ie for now.';
+  note.hidden = false;
+});
+</script>
+</body>
+</html>
