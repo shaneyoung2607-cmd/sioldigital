@@ -13,6 +13,6 @@ document.getElementById('enquiry').addEventListener('submit', function (e) {
   e.preventDefault();
   var note = document.getElementById('note');
   var name = document.getElementById('name').value.trim();
-  note.textContent = 'Go raibh maith agat' + (name ? ', ' + name : '') + '. This form is a preview and is not connected yet, so please email hello@siol.ie for now.';
+  note.textContent = 'Go raibh maith agat' + (name ? ', ' + name : '') + '. This form is a preview and is not connected yet, so please email sioldigital@gmail.com for now.';
   note.hidden = false;
 });
