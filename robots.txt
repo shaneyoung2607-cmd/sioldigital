@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sioldigital.vercel.app/sitemap.xml
