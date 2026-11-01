@@ -1,32 +1,22 @@
 /* Layout: a dictionary-entry hero ("síol, n. seed"), then left-aligned bands that grow from seed to harvest. */
+/* Always dark green, whatever the visitor's light/dark setting. */
 :root {
-  --bg: #F2F5F0;          /* pale field */
-  --surface: #E6ECE4;     /* hedgerow mist */
-  --fg: #10291F;          /* bog-oak ink */
-  --muted: #4E6358;
-  --line: #C9D4CB;
-  --moss: #2F6B4F;        /* moss green */
-  --gorse: #E8B931;       /* gorse yellow, the accent */
+  --bg: #0C1B15;          /* bog green */
+  --surface: #132820;     /* hedgerow shade */
+  --fg: #E6EEE7;
+  --muted: #9DB2A5;
+  --line: #24402F;
+  --moss: #7FBF8E;        /* moss green */
+  --gorse: #EBC24A;       /* gorse yellow, the accent */
   --gorse-ink: #10291F;   /* text on gorse */
   --leaf: #7FBF8E;
-  --band: #10291F;        /* dark band background */
-  --band-fg: #EAF0EA;
+  --band: #081410;        /* darker band background */
+  --band-fg: #E6EEE7;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
   --max: 72rem;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0C1B15; --surface: #132820; --fg: #E6EEE7; --muted: #9DB2A5; --line: #24402F;
-    --moss: #7FBF8E; --gorse: #EBC24A; --gorse-ink: #10291F; --leaf: #7FBF8E;
-    --band: #081410; --band-fg: #E6EEE7; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0C1B15; --surface: #132820; --fg: #E6EEE7; --muted: #9DB2A5; --line: #24402F;
-  --moss: #7FBF8E; --gorse: #EBC24A; --gorse-ink: #10291F; --leaf: #7FBF8E;
-  --band: #081410; --band-fg: #E6EEE7; color-scheme: dark;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
