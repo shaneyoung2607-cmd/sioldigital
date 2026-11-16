@@ -47,29 +47,42 @@ document.getElementById('enquiry').addEventListener('submit', function (e) {
     return box.parentNode.textContent.trim();
   });
 
+  var fields = {
+    Name: name,
+    Business: val('biz') || '—',
+    Email: reply,
+    Phone: val('phone') || '—',
+    Needs: needs.length ? needs.join(', ') : '—',
+    Message: val('msg') || '—'
+  };
+  var payload = { _subject: 'New Síol Digital enquiry from ' + name, _replyto: reply, _template: 'table', _captcha: 'false' };
+  Object.keys(fields).forEach(function (key) { payload[key] = fields[key]; });
+
+  // One attempt at sending. FormSubmit can be slow, and now and then answers with a server error.
+  var send = function () {
+    return fetch(ENQUIRY_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (r) {
+        if (!r.ok || String(r.data.success) !== 'true') throw new Error(r.data.message || 'Send failed');
+      });
+  };
+
   button.disabled = true;
   button.textContent = 'Sending…';
   note.hidden = true;
+  // If it is taking a while, say so, so the visitor knows to wait.
+  var slow = setTimeout(function () { button.textContent = 'Still sending, one moment…'; }, 5000);
 
-  fetch(ENQUIRY_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      _subject: 'New Síol Digital enquiry from ' + name,
-      _replyto: reply,
-      _template: 'table',
-      _captcha: 'false',
-      Name: name,
-      Business: val('biz') || '—',
-      Email: reply,
-      Phone: val('phone') || '—',
-      Needs: needs.length ? needs.join(', ') : '—',
-      Message: val('msg') || '—'
+  send()
+    .catch(function () {
+      // First try failed: wait a moment and try once more before giving up.
+      return new Promise(function (resolve) { setTimeout(resolve, 1500); }).then(send);
     })
-  })
-    .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-    .then(function (r) {
-      if (!r.ok || String(r.data.success) !== 'true') throw new Error(r.data.message || 'Send failed');
+    .then(function () {
       form.reset();
       show(', ' + name + '! Your enquiry is with us and we will reply within two working days.');
       // Mark the Irish thank-you as Irish so screen readers pronounce it properly.
@@ -79,9 +92,18 @@ document.getElementById('enquiry').addEventListener('submit', function (e) {
       note.insertBefore(thanks, note.firstChild);
     })
     .catch(function () {
-      show('Sorry, your enquiry did not send. Please email us at sioldigital@gmail.com and we will get back to you.', true);
+      // Both tries failed. Keep what they typed in the form, and offer a link that
+      // opens their own email app with the enquiry already written out.
+      show('Sorry, your enquiry did not send. ', true);
+      var body = Object.keys(fields).map(function (key) { return key + ': ' + fields[key]; }).join('\n');
+      var link = document.createElement('a');
+      link.href = 'mailto:sioldigital@gmail.com?subject=' + encodeURIComponent('Enquiry from ' + name) + '&body=' + encodeURIComponent(body);
+      link.textContent = 'Email it to us instead';
+      note.appendChild(link);
+      note.appendChild(document.createTextNode(' (your details are filled in for you), or write to sioldigital@gmail.com.'));
     })
     .then(function () {
+      clearTimeout(slow);
       button.disabled = false;
       button.textContent = 'Get my free audit';
       note.focus(); // moves screen readers (and the phone's view) to the result message
