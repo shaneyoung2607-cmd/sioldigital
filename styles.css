@@ -120,6 +120,8 @@ header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; 
 .person p { color: var(--muted); }
 .person ul { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem; }
 .person li { font-size: .8rem; font-family: var(--mono); padding: .25rem .6rem; border-radius: 999px; background: var(--surface); }
+.person-link { display: inline-block; margin-top: 1rem; font-weight: 600; color: var(--fg); text-decoration: none; border-bottom: 1.5px solid var(--gorse); padding-bottom: .1rem; }
+.person-link:hover { color: var(--moss); }
 .why { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding-top: 2rem; border-top: 1px solid var(--line); }
 .why b { font-family: var(--display); font-size: 1.15rem; display: block; margin-bottom: .3rem; }
 .why span { color: var(--muted); font-size: .97rem; }
@@ -148,6 +150,8 @@ textarea { min-height: 7rem; resize: vertical; }
 .checks input { width: auto; accent-color: var(--moss); }
 .checks label:has(input:checked) { border-color: var(--moss); background: var(--surface); }
 .form-note { grid-column: 1 / -1; font-size: .9rem; color: var(--moss); font-weight: 500; }
+.form-note.is-error { color: var(--gorse); }
+button:disabled { opacity: .6; cursor: progress; transform: none; }
 @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { form { grid-template-columns: 1fr; } }
 
