@@ -14,6 +14,11 @@
   <meta property="og:description" content="We help Irish businesses get found on Google, look sharp online, and run on software built around how they actually work.">
   <meta property="og:url" content="https://sioldigital.vercel.app/">
   <meta property="og:locale" content="en_IE">
+  <meta property="og:image" content="https://sioldigital.vercel.app/images/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Síol Digital: SEO, websites and custom software for Dublin businesses.">
+  <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,6 +26,7 @@
     "name": "Síol Digital",
     "url": "https://sioldigital.vercel.app/",
     "logo": "https://sioldigital.vercel.app/images/logo.svg",
+    "image": "https://sioldigital.vercel.app/images/social-card.png",
     "email": "sioldigital@gmail.com",
     "description": "Dublin digital growth agency for SEO, websites, bespoke systems and secure logins.",
     "address": { "@type": "PostalAddress", "addressLocality": "Dublin", "addressCountry": "IE" },
@@ -29,13 +35,23 @@
       { "@type": "Person", "name": "Shane Young" },
       { "@type": "Person", "name": "Cian McCaul" }
     ],
-    "knowsAbout": ["SEO", "Web design", "Website development", "Bespoke software", "Authentication"]
+    "knowsAbout": ["SEO", "Web design", "Website development", "Bespoke software", "Authentication"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO optimisation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website development" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bespoke systems" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Login and member systems" } }
+      ]
+    }
   }
   </script>
   <link rel="icon" href="images/logo.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" href="fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -52,34 +68,51 @@
   </defs>
 </svg>
 
+<a class="skip" href="#top">Skip to content</a>
+
 <header class="top">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Síol Digital home">
       <svg aria-hidden="true"><use href="#logo"/></svg>
       <span>Síol<small>Digital</small></span>
     </a>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process">How we work</a></li>
-      <li><a href="#team">Team</a></li>
-    </ul>
-    <a class="btn btn-gorse" href="#contact">Start a project</a>
+    <nav class="nav-links" aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How we work</a></li>
+        <li><a href="#team">Team</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-gorse nav-cta" href="#contact">Get a free audit</a>
+    <button class="menu-btn" type="button" popovertarget="menu" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
   </div>
 </header>
 
-<main id="top">
+<!-- Phone menu. Opens from the menu button; the browser closes it on Esc or a tap outside. -->
+<nav class="menu" id="menu" popover aria-label="Menu">
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How we work</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+  <a class="btn btn-gorse" href="#contact">Get a free audit</a>
+</nav>
+
+<main id="top" tabindex="-1">
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="entry"><b>síol</b><span>/ʃiːl/</span><i>ainmfhocal</i><span>— seed; the beginning of growth.</span></div>
-        <h1>We plant the digital roots your business <em>grows</em> from.</h1>
+        <div class="entry"><b lang="ga">síol</b><span>/ʃiːl/</span><i lang="ga">ainmfhocal</i><span>— seed; the beginning of growth.</span></div>
+        <h1><span class="h1-plain">SEO, websites and custom software for Dublin businesses.</span> We plant the digital roots your business <em>grows</em> from.</h1>
         <p class="lede">Síol Digital is a Dublin growth agency. We help Irish businesses get found on Google, look sharp online, and run on software built around how they actually work.</p>
         <div class="ctas">
           <a class="btn btn-gorse" href="#contact">Get a free audit</a>
           <a class="btn btn-ghost" href="#services">See what we do</a>
         </div>
       </div>
-      <svg class="sprout" viewBox="0 0 420 340" role="img" aria-label="A seedling growing out of a rising search-ranking line">
+      <svg class="sprout" viewBox="0 0 420 340" role="img" aria-label="A seedling growing at the end of a rising line, from month 1 to month 6">
         <g stroke="var(--line)" stroke-width="1">
           <line x1="20" y1="300" x2="400" y2="300"/>
           <line x1="20" y1="230" x2="400" y2="230" stroke-dasharray="3 6"/>
@@ -89,8 +122,6 @@
         <g font-family="JetBrains Mono, monospace" font-size="11" fill="var(--muted)">
           <text x="20" y="320">Month 1</text>
           <text x="345" y="320">Month 6</text>
-          <text x="364" y="84">#1</text>
-          <text x="358" y="224">#10</text>
         </g>
         <path class="grow" d="M30 290 C 90 285, 120 260, 160 240 S 230 190, 260 160 S 320 110, 380 92" fill="none" stroke="var(--moss)" stroke-width="4" stroke-linecap="round"/>
         <g transform="translate(380 92)">
@@ -166,10 +197,10 @@
         <p>Every project follows the same four stages, so you always know where things stand and what comes next.</p>
       </div>
       <div class="steps">
-        <div class="step"><span class="stage">Stage 1</span><h3>Plant</h3><span class="ga">Cur</span><p>A free call and audit. We look at your site, your rankings and your workflow, then send a plain-English plan with a fixed quote.</p></div>
-        <div class="step"><span class="stage">Stage 2</span><h3>Root</h3><span class="ga">Fréamhú</span><p>We design and build in short sprints, with a preview link you can click through every week.</p></div>
-        <div class="step"><span class="stage">Stage 3</span><h3>Grow</h3><span class="ga">Fás</span><p>Launch, then track. Search rankings, enquiries and speed are measured from day one.</p></div>
-        <div class="step"><span class="stage">Stage 4</span><h3>Harvest</h3><span class="ga">Fómhar</span><p>Monthly reports on what's working, and steady improvements to keep it growing.</p></div>
+        <div class="step"><span class="stage">Stage 1</span><h3>Plant</h3><span class="ga" lang="ga">Cur</span><p>A free call and audit. We look at your site, your rankings and your workflow, then send a plain-English plan with a fixed quote.</p></div>
+        <div class="step"><span class="stage">Stage 2</span><h3>Root</h3><span class="ga" lang="ga">Fréamhú</span><p>We design and build in short sprints, with a preview link you can click through every week.</p></div>
+        <div class="step"><span class="stage">Stage 3</span><h3>Grow</h3><span class="ga" lang="ga">Fás</span><p>Launch, then track. Search rankings, enquiries and speed are measured from day one.</p></div>
+        <div class="step"><span class="stage">Stage 4</span><h3>Harvest</h3><span class="ga" lang="ga">Fómhar</span><p>Monthly reports on what's working, and steady improvements to keep it growing.</p></div>
       </div>
     </div>
   </section>
@@ -200,7 +231,7 @@
             <div class="role">Co-founder · Engineering</div>
             <p>Computer Science at DCU. Cian builds the websites, bespoke systems and secure login flows, and keeps them fast and maintainable.</p>
             <ul><li>Web development</li><li>Systems &amp; APIs</li><li>Authentication</li></ul>
-            <a class="person-link" href="https://cianmccaul.vercel.app/" target="_blank" rel="noopener">See Cian's portfolio →</a>
+            <a class="person-link" href="https://cianmccaul.vercel.app/" target="_blank" rel="noopener">See Cian's portfolio <span aria-hidden="true">→</span><span class="sr-only"> (opens in a new tab)</span></a>
           </div>
         </article>
       </div>
@@ -215,22 +246,22 @@
   <section id="contact" class="contact">
     <div class="wrap contact-grid">
       <div>
-        <div class="eyebrow">Dia duit</div>
+        <div class="eyebrow" lang="ga">Dia duit</div>
         <h2>Let's plant something.</h2>
         <p class="lede">Tell us a bit about your business and we'll come back within two working days with a free audit of your current site and search presence.</p>
         <div class="mail">
           <code id="email">sioldigital@gmail.com</code>
-          <button type="button" id="copy">Copy email</button>
+          <button type="button" id="copy" aria-live="polite">Copy email</button>
         </div>
         <a class="review-link" href="https://g.page/r/CXowaJ8XsCbJEBM/review" target="_blank" rel="noopener">
-          <span class="stars" aria-hidden="true">★★★★★</span> Worked with us? Leave a Google review
+          <span class="stars" aria-hidden="true">★★★★★</span> Worked with us? Leave a Google review<span class="sr-only"> (opens in a new tab)</span>
         </a>
       </div>
       <form id="enquiry" novalidate>
-        <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Aoife Byrne"></div>
-        <div class="field"><label for="biz">Business</label><input id="biz" name="biz" placeholder="Byrne's Bakery, Ranelagh"></div>
-        <div class="field"><label for="reply">Your email</label><input id="reply" name="reply" type="email" autocomplete="email" placeholder="aoife@byrnesbakery.ie" required></div>
-        <div class="field"><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="087 123 4567"></div>
+        <div class="field"><label for="name">Your name <span class="hint">required</span></label><input id="name" name="name" autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="e.g. Aoife Byrne" required aria-describedby="name-error"><p class="field-error" id="name-error" hidden></p></div>
+        <div class="field"><label for="biz">Business <span class="hint">optional</span></label><input id="biz" name="biz" autocomplete="organization" autocapitalize="words" enterkeyhint="next" placeholder="e.g. Byrne's Bakery, Ranelagh"></div>
+        <div class="field"><label for="reply">Your email <span class="hint">required</span></label><input id="reply" name="reply" type="email" autocomplete="email" autocapitalize="none" spellcheck="false" enterkeyhint="next" placeholder="e.g. aoife@byrnesbakery.ie" required aria-describedby="reply-error"><p class="field-error" id="reply-error" hidden></p></div>
+        <div class="field"><label for="phone">Phone <span class="hint">optional</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" enterkeyhint="next" placeholder="e.g. 087 123 4567"></div>
         <input type="text" id="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
 
         <div class="field full">
@@ -243,9 +274,12 @@
             <label><input type="checkbox" id="n-other"> Something else</label>
           </div>
         </div>
-        <div class="field full"><label for="msg">Anything else?</label><textarea id="msg" name="msg" placeholder="We get lots of walk-ins but almost no online orders…"></textarea></div>
-        <div class="field full"><button class="btn btn-gorse" type="submit" style="justify-self:start">Send enquiry</button></div>
-        <p class="form-note" id="note" hidden></p>
+        <div class="field full"><label for="msg">Anything else? <span class="hint">optional</span></label><textarea id="msg" name="msg" placeholder="e.g. We get lots of walk-ins but almost no online orders…"></textarea></div>
+        <div class="field full">
+          <button class="btn btn-gorse" type="submit" style="justify-self:start">Get my free audit</button>
+          <p class="privacy">We only use your details to reply to your enquiry. The form is delivered to our inbox by FormSubmit.</p>
+        </div>
+        <p class="form-note" id="note" role="status" tabindex="-1" hidden></p>
       </form>
     </div>
   </section>
@@ -254,8 +288,8 @@
 <footer>
   <div class="wrap foot">
     <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg><span>Síol<small>Digital</small></span></a>
-    <a class="foot-review" href="https://g.page/r/CXowaJ8XsCbJEBM/review" target="_blank" rel="noopener">Review us on Google</a>
-    <span>Fás le chéile · Grow together. Dublin, Ireland · © 2026</span>
+    <a class="foot-review" href="https://g.page/r/CXowaJ8XsCbJEBM/review" target="_blank" rel="noopener">Review us on Google<span class="sr-only"> (opens in a new tab)</span></a>
+    <span><span lang="ga">Fás le chéile</span> · Grow together. Dublin, Ireland · © 2026</span>
   </div>
 </footer>
 

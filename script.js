@@ -25,11 +25,22 @@ document.getElementById('enquiry').addEventListener('submit', function (e) {
     note.hidden = false;
   };
 
+  // Show a problem right under the box it belongs to. Screen readers read it out
+  // because each box is linked to its message (aria-describedby in index.html).
+  var fieldError = function (id, text) {
+    var input = document.getElementById(id), msg = document.getElementById(id + '-error');
+    msg.textContent = text || '';
+    msg.hidden = !text;
+    if (text) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+    return input;
+  };
+
   var name = val('name'), reply = val('reply');
-  if (!name) { show('Please add your name.', true); document.getElementById('name').focus(); return; }
-  if (!reply || !document.getElementById('reply').checkValidity()) {
-    show('Please add an email address so we can reply.', true); document.getElementById('reply').focus(); return;
-  }
+  var nameBad = !name;
+  var replyBad = !reply || !document.getElementById('reply').checkValidity();
+  var nameInput = fieldError('name', nameBad ? 'Please add your name.' : '');
+  var replyInput = fieldError('reply', replyBad ? 'Please add an email address so we can reply.' : '');
+  if (nameBad || replyBad) { note.hidden = true; (nameBad ? nameInput : replyInput).focus(); return; }
   if (val('hp')) return; // spam bot filled the hidden field
 
   var needs = Array.prototype.map.call(form.querySelectorAll('.checks input:checked'), function (box) {
@@ -60,13 +71,33 @@ document.getElementById('enquiry').addEventListener('submit', function (e) {
     .then(function (r) {
       if (!r.ok || String(r.data.success) !== 'true') throw new Error(r.data.message || 'Send failed');
       form.reset();
-      show('Go raibh maith agat, ' + name + '! Your enquiry is with us and we will reply within two working days.');
+      show(', ' + name + '! Your enquiry is with us and we will reply within two working days.');
+      // Mark the Irish thank-you as Irish so screen readers pronounce it properly.
+      var thanks = document.createElement('span');
+      thanks.lang = 'ga';
+      thanks.textContent = 'Go raibh maith agat';
+      note.insertBefore(thanks, note.firstChild);
     })
     .catch(function () {
       show('Sorry, your enquiry did not send. Please email us at sioldigital@gmail.com and we will get back to you.', true);
     })
     .then(function () {
       button.disabled = false;
-      button.textContent = 'Send enquiry';
+      button.textContent = 'Get my free audit';
+      note.focus(); // moves screen readers (and the phone's view) to the result message
     });
+});
+
+// Clear a box's error as soon as the visitor starts fixing it.
+['name', 'reply'].forEach(function (id) {
+  document.getElementById(id).addEventListener('input', function () {
+    this.removeAttribute('aria-invalid');
+    document.getElementById(id + '-error').hidden = true;
+  });
+});
+
+// Phone menu: close it after a link is tapped.
+var menu = document.getElementById('menu');
+menu.addEventListener('click', function (e) {
+  if (e.target.closest('a') && menu.hidePopover) menu.hidePopover();
 });
